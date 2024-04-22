@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['role'] != "mess_member") {
+    header("location:index.php");
+}
+?>
+
 <!doctype html>
 <html>
 
@@ -38,11 +45,22 @@
         td {
             border: 1px solid black;
         }
+
+        .logout {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
     </style>
 </head>
 
 <body>
     <h2>Feedback Forms</h2>
+    <div class="logout">
+        <form action="logout.php" method="post">
+            <input type="submit" value="Log out">
+        </form>
+    </div>
 
     <?php
     $conn = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management');
@@ -74,7 +92,7 @@
 
     mysqli_close($conn);
     ?>
-
+    <p align='right' ><a href="admin.php">Back to Admin Page</a></p>
 </body>
 
 </html>

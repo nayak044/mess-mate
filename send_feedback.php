@@ -1,7 +1,9 @@
 <?php
 session_start();
+if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['role'] != "student") {
+    header("location:index.php");
+}
 ?>
-
 <?php
 
 $conn = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management');
