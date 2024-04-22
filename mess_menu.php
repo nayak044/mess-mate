@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html>
 
@@ -93,7 +97,13 @@
 		?>
 
 	</table>
-	<p align="right"><a href="member.php">click here to visit back </a><br></p>
+	<?php
+	if ($_SESSION['role'] == "mess_member") {
+		echo "<p align='right'><a href='admin.php'>back to home page </a></p>";
+	} else if ($_SESSION['role'] == "student") {
+		echo "<p align='right'><a href='student_home.php'>back to home page</a></p>";
+	}
+	?>
 
 </body>
 

@@ -31,28 +31,37 @@ session_start();
             font-family: verdana;
             font-size: 100%;
         }
+
+        .logout {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
     </style>
 </head>
 
 <body>
 
-    <p align="right"><a href="index.php">log out </a></p>
+    <div class="logout">
+        <form action="logout.php" method="post">
+            <input type="submit" value="Log out">
+        </form>
+    </div>
 
     <?php
-    echo "Welcome to admin page ...";
+    echo "Welcome to Mess Committee page ...";
     echo "<br>";
-    echo "admin - ";
-
-
+    echo "Mess Committee Member - ";
+    echo $_SESSION['name'];
+    echo "<br>";
+    echo "Name - ";
     echo $_SESSION['sess_user'];
     echo "<br>";
     ?>
     <h3>STUDENT :</h3>
-    <a href="sturegister.php">Click here to register a student</a><br>
     <a href="remove_stu.php">Click here to remove a student</a><br>
     <a href="stu_details_table.php">Click here to view student details</a><br><br><br>
     <h3>EMPLOYEE :</h3>
-    <a href="register_emp.php">Click here to register an employee</a><br>
     <a href="remove_emp.php">Click here to remove an employee</a><br>
     <a href="emp_details_table.php">Click here to view employee details</a><br>
     <h3>MESS MENU:</h3>

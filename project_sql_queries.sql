@@ -3,23 +3,24 @@ DROP DATABASE mess_management;
 CREATE
 OR REPLACE DATABASE mess_management;
 
+USE mess_management;
+
 CREATE TABLE IF NOT EXISTS stu_info (
     student_id varchar(30) PRIMARY KEY,
     student_name varchar(30) NOT NULL,
-    PASSWORD varchar(30),
+    `password` varchar(30),
     date_of_birth date,
-    room_no varchar(30),
+    email_id varchar(70) UNIQUE,
+    room_no varchar(30)
 );
 
-CREATE TABLE IF NOT EXISTS emp_details (
-    emp_id varchar(30) PRIMARY KEY,
-    first_name varchar(30),
-    last_name varchar(30),
+CREATE TABLE IF NOT EXISTS mess_member (
+    member_id varchar(30) PRIMARY KEY,
+    member_name varchar(30),
     date_of_birth date,
-    email_id varchar(30),
-    city varchar(30),
-    `state` varchar(30),
-    pincode varchar(30),
+    `password` varchar(30),
+    email_id varchar(70) UNIQUE,
+    phone_no int(11)
 );
 
 CREATE TABLE IF NOT EXISTS messmenu (
@@ -34,11 +35,10 @@ CREATE TABLE IF NOT EXISTS messmenu (
     sunday varchar(200)
 );
 
-
 CREATE TABLE IF NOT EXISTS new_stock_details (
     item_name varchar(30),
-    cost_per_unit decimal(10, 5),
     unit varchar(30),
+    cost_per_unit decimal(10, 5),
     quantity_bought int(11),
     date date,
     PRIMARY KEY(item_name, date)
@@ -54,127 +54,103 @@ CREATE TABLE IF NOT EXISTS used_stock_details (
 );
 
 -- NEW TABLE
-
 CREATE TABLE IF NOT EXISTS Feedback (
-    feedback_id int PRIMARY KEY DEFAULT AUTO_INCREMENT,
-    student_id  varchar(30) NOT NULL,
+    feedback_id int AUTO_INCREMENT PRIMARY KEY,
+    student_id varchar(30) NOT NULL,
     `message` varchar(255) NOT NULL,
     rating int,
     `date` date DEFAULT (curdate())
 );
 
-
 INSERT INTO
-    stu_info
+    stu_info (
+        student_id,
+        student_name,
+        `password`,
+        date_of_birth,
+        email_id,
+        room_no
+    )
 VALUES
     (
         '170001013',
         'ATCHE SRAVYA',
         '1234',
         '2000-03-03',
-        '606',
-        'APJ',
-        100
+        'atche@gmail.com',
+        '606'
     ),
     (
         '170001014',
         'RUSHYA',
         '123',
         '2000-06-10',
-        '604',
-        'studio',
-        25
+        'rushya@gmail.com',
+        '604'
     ),
     (
         '170002013',
         'SHIRIDI',
         '234',
         '1999-07-17',
-        '302',
-        'studio',
-        30
+        'shirdi@gmail.com',
+        '302'
     ),
     (
         '170001015',
         'SAMHIT',
         '657',
         '1999-11-12',
-        '235',
-        'studio',
-        35
+        'samhit@gmail.com',
+        '235'
     ),
     (
         '170001017',
         'DINESH',
         '286',
-        '2000-04-3',
-        '245',
-        'studio',
-        60
+        '2000-04-03',
+        'dinesh@gmail.com',
+        '245'
     );
 
 INSERT INTO
-    emp_details (
-        emp_id,
-        first_name,
-        last_name,
+    mess_member (
+        member_id,
+        member_name,
         date_of_birth,
+        `password`,
         email_id,
-        city,
-        state,
-        pincode
+        phone_no
     )
 VALUES
     (
         '100',
-        'karthik',
-        'gurram',
-        '108',
+        'karthik gurram',
         '2000-03-06',
+        '108',
         'karthik@gmail.com',
-        '2016-04-05',
-        2,
-        '230',
-        '4',
-        'sarwata',
-        'hyderabad',
-        'telangana',
-        '500013'
+        2
+    ),
+    (
+        '106',
+        'praveen sbhg',
+        '2000-04-06',
+        '109',
+        'praveen@gmail.com',
+        2
     );
-
-(
-    '106',
-    'praveen',
-    'sbhg',
-    '109',
-    '2000-04-06',
-    'praveen@gmail.com',
-    '2016-04-05',
-    2,
-    '230',
-    '4',
-    'sarwata',
-    'hyderabad',
-    'telangana',
-    '500013'
-);
-
-INSERT INTO
-    admin_details
-VALUES
-    ('100', '123');
 
 INSERT INTO
     used_stock_details
 VALUES
-    ('eggs', 'dozen', 10, 2, '2018-11-14'),
-    ('bananas', 'dozen', 15, 6, '2018-11-15');
+    ('eggs', 'dozen', 10, 2, '2024-04-21'),
+    ('bananas', 'dozen', 15, 6, '2024-04-21');
 
 INSERT INTO
     new_stock_details
 VALUES
-    ('eggs', 'dozen', 10, 2, '2018-11-14'),
-    ('bananas', 'dozen', 15, 6, '2018-11-15');
+    ('eggs', 'dozen', 10, 2, '2024-04-21'),
+    ('bananas', 'dozen', 15, 6, '2024-04-21');
 
 INSERT INTO
     messmenu

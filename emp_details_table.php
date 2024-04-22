@@ -36,7 +36,7 @@
 
 	<?php
 	$conn = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management');
-	$query = mysqli_query($conn, "select * from emp_details ");
+	$query = mysqli_query($conn, "select * from mess_member ");
 	?>
 	<table align="center" border="1px" style="width:2500px; line-height:60px;">
 		<tr>

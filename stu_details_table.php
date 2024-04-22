@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!doctype html>
 <html>
 
@@ -65,8 +69,6 @@
 			<th> Password </th>
 			<th> Date of birth </th>
 			<th> Room no. </th>
-			<th> Block name </th>
-			<th> Wallet money </th>
 		</tr>
 
 		<?php
@@ -77,10 +79,9 @@
 				<tr>
 					<td> <?php echo $rows['student_id']; ?></td>
 					<td> <?php echo $rows['student_name']; ?></td>
-					<td> <?php echo $rows['PASSWORD']; ?></td>
+					<td> <?php echo $rows['password']; ?></td>
 					<td> <?php echo $rows['date_of_birth']; ?></td>
 					<td> <?php echo $rows['room_no']; ?></td>
-					<td> <?php echo $rows['block_name']; ?></td>
 
 				</tr>
 				<?php
@@ -89,7 +90,13 @@
 		?>
 
 	</table>
-	<p align="right"><a href="admin.php"> click here to visit back </a></p>
+	<?php 
+		if ($_SESSION['role'] == "mess_member") {
+			echo "<p align='right'><a href='admin.php'>back to home page</a></p>";
+		} else if ($_SESSION['role'] == "student") {
+			echo "<p align='right'><a href='student_home.php'>back to home page</a></p>";
+		}
+	?>
 
 
 </body>

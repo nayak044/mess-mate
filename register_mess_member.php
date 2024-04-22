@@ -32,7 +32,7 @@
 <body>
 
     <center>
-        <h1>REGISTER A STUDENT</h1>
+        <h1>REGISTER AN MESS MEMBER</h1>
     </center>
 
     <center>
@@ -42,47 +42,47 @@
         <legend>
             <fieldset>
 
-                Student id : <input type="text" name="user"><br />
-                student name : <input type="text" name="stu_name"><br />
-                Password : <input type="password" name="pass"><br />
-                Confirm Password: <input type="password" name="cpass"><br />
+                Mess Member id : <input type="text" name="user"><br />
+                Mess Member name : <input type="text" name="name"><br />
                 date of birth : <input type="date" name="d_o_b"><br />
-                Room no : <input type="text" name="room_no"><br />
+                email_id : <input type="email" name="email_id"><br />
+                phone no : <input type="text" name="phone_no"><br />
                 <input type="submit" value="Register" name="submit" />
 
             </fieldset>
         </legend>
     </form>
     <?php
-    if (isset($_POST["submit"])) {
+    if (isset($_POST["submit"])) { // echo "hii";
         if (
-            !empty($_POST['user']) && !empty($_POST['pass']) && !empty($_POST['cpass']) && !empty($_POST['stu_name'])
-            && !empty($_POST['d_o_b']) && !empty($_POST['room_no'])
+            !empty($_POST['user'])  && !empty($_POST['name']) && !empty($_POST['email_id'])
+            && !empty($_POST['d_o_b']) && !empty($_POST['phone_no'])
         ) {
+            //echo "heya";
             $user = $_POST['user'];
-            $pass = $_POST['pass'];
-            $stu_name = $_POST['stu_name'];
+            $name = $_POST['name'];
             $d_o_b = $_POST['d_o_b'];
-            $room_no = $_POST['room_no'];
+            $email_id = $_POST['email_id'];
+            $phone_no = $_POST['phone_no'];
             $con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management') or die(mysql_error());
             // mysql_select_db('mess_management') or die("cannot select DB");  
     
-            $query = mysqli_query($con, "SELECT * FROM stu_info WHERE student_id='" . $user . "'");
+            $query = mysqli_query($con, "SELECT * FROM mess_member WHERE emp_id='" . $user . "'");
             $numrows = mysqli_num_rows($query);
-            if ($numrows == 0) {
-                //    $sql="INSERT INTO login(username,password) VALUES('$user','$pass')";  
-                $sql1 = "INSERT INTO stu_info(student_id,student_name,date_of_birth,password,room_no) VALUES
-	         ('$user','$stu_name','$d_o_b','$pass','$room_no')";
+            if ($numrows == 0) {    //echo "hello";
+                $sql1 = "INSERT INTO mess_member(emp_id,member_name,date_of_birth,email_id,phone_no) VALUES
+	         ('$user','$name','$d_o_b','$email_id','$phone_no')";
 
                 $result = mysqli_query($con, $sql1);
                 if ($result) {
-                    echo "Account Successfully Created";
+                    echo "Mess Member details have been successfully registered.";
+                    header("Location: admin.php");
                 } else {
                     echo "Failure!";
                 }
 
             } else {
-                echo "That username already exists! Please try again with another.";
+                echo "That employee_id already exists! Please enter a new id.";
             }
 
         } else {
@@ -91,7 +91,7 @@
     }
     ?>
 
-    <p align="right"><a href="admin.php">click here to visit back </a></p>
+    <p align="right"><a href="index.php">click here to login </a></p>
 
 </body>
 

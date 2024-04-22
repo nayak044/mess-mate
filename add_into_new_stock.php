@@ -26,11 +26,21 @@
             font-family: verdana;
             font-size: 100%;
         }
+
+        .logout {
+            position: absolute;
+            top: 50px;
+            right: 50px;
+        }
     </style>
 </head>
 
 <body>
-    <p align="right"><a href="index.php">log out </a></p>
+    <div class="logout">
+        <form action="logout.php" method="post">
+            <input type="submit" value="Log out">
+        </form>
+    </div>
 
     <center>
         <h1>USED ITEM DETAILS</h1>

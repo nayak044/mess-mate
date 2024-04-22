@@ -31,8 +31,6 @@
 </head>
 
 <body>
-	<p align="right"><a href="index.php">log out </a></p>
-
 
 	<?php
 	$conn = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management');

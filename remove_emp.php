@@ -5,7 +5,7 @@ session_start();
 <html>
 
 <head>
-	<title>remove employee</title>
+	<title>Remove employee</title>
 
 	<style>
 		body {
@@ -36,7 +36,6 @@ session_start();
 </head>
 
 <body>
-	<p align="right"><a href="index.php">log out </a></p>
 	<h3> DEREGISTER AN EMPLOYEE </h3>
 	<form action="" method="post">
 		Enter the employee_id of employee to be deregistered : <input type="text" name="emp_id"></br>
@@ -54,7 +53,7 @@ session_start();
 			$con = mysqli_connect($host, $root, $password, $db);
 			$stu = $_POST['emp_id'];
 			//	echo $stu;
-			$sql = mysqli_query($con, "select * from emp_details where emp_id = '" . $stu . "' ");
+			$sql = mysqli_query($con, "select * from mess_member where emp_id = '" . $stu . "' ");
 			$num = mysqli_num_rows($sql);
 			if ($num == 0 || !$sql) {
 				echo "Employee with employee id- ";
@@ -63,7 +62,7 @@ session_start();
 				echo "</br>";
 				echo "</br>";
 			} else {
-				$query = " DELETE FROM emp_details where emp_id = '" . $stu . "' ";
+				$query = " DELETE FROM mess_member where emp_id = '" . $stu . "' ";
 				$sql1 = mysqli_query($con, $query);
 				if (!$sql1) {
 					echo ("Error description: " . mysqli_error($con));

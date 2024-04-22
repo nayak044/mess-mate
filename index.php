@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!doctype html>
 <html>
 
@@ -99,7 +102,7 @@
 
             <form align="center" action="" method="post">
                 <div class="container">
-                    <input type="text" placeholder="username" name="user"><br />
+                    <input type="text" placeholder="email" name="user"><br />
                     <input type="password" placeholder="password" name="pass"><br />
                 </div>
 
@@ -108,7 +111,7 @@
     </legend>
     <p align="center"> <a href="sturegister.php">Student Register</a></p>
     <hr>
-    <p align="center"> <a href="register_emp.php">Employee Register</a></p>
+    <p align="center"> <a href="register_mess_member.php">Mess Member Register</a></p>
     </form>
     <?php
     if (isset($_POST["submit"])) {
@@ -132,36 +135,44 @@
                 exit();
             }
 
-            $query1 = mysqli_query($con, "select * from admin_details where admin_id = '" . $user . "' and admin_password = '" . $pass . "' ");
+            $query1 = mysqli_query($con, "select * from mess_member where email_id = '" . $user . "' and password = '" . $pass . "' ");
             $numrows1 = mysqli_num_rows($query1);
 
             if ($numrows1 != 0) {
                 $row = mysqli_fetch_assoc($query1);
-                $admin_user = $row['admin_id'];
-                $admin_password = $row['admin_password'];
+                $email_id = $row['email_id'];
+                $admin_password = $row['password'];
+                $name = $row['member_name'];
 
-                if ($user == $admin_user && $pass == $admin_password) {
+
+                if ($user == $email_id && $pass == $admin_password) {
                     session_start();
-                    $_SESSION['sess_user'] = $admin_user;
+                    $_SESSION['sess_user'] = $email_id;
+                    $_SESSION['role'] = "mess_member";
+                    $_SESSION['name'] = $name;
+
                     header("Location: admin.php");
                 }
 
             }
 
-            $query = mysqli_query($con, "SELECT * FROM stu_info WHERE student_id='" . $user . "' AND PASSWORD='" . $pass . "'", MYSQLI_STORE_RESULT);
+            $query = mysqli_query($con, "SELECT * FROM stu_info WHERE email_id='" . $user . "' AND password ='" . $pass . "'");
             $numrows = mysqli_num_rows($query);
             if ($numrows != 0) {
-                while ($row = mysqli_fetch_assoc($query)) {
-                    $dbusername = $row['student_id'];
-                    $dbpassword = $row['PASSWORD'];
-                }
+                $row = mysqli_fetch_assoc($query);
+                $dbusername = $row['email_id'];
+                $stu_id = $row['student_id'];
+                $dbpassword = $row['password'];
+                $name = $row['name'];
 
                 if ($user == $dbusername && $pass == $dbpassword) {
                     session_start();
-                    $_SESSION['sess_user'] = $user;
+                    $_SESSION['sess_user'] = $stu_id;
+                    $_SESSION['name'] = $name;
+                    $_SESSION['role'] = "student";
 
                     /* Redirect browser */
-                    header("Location: member.php");
+                    header("Location: student_home.php");
                 }
             } else {
                 echo "Invalid username or password!";

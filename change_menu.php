@@ -35,7 +35,6 @@
 </head>
 
 <body>
-	<p align="right"><a href="index.php">log out </a></p>
 
 	<center>
 		<h1>CHANGE MESS MENU</h1> </br></br>
