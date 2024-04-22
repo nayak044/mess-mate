@@ -53,7 +53,6 @@ CREATE TABLE IF NOT EXISTS used_stock_details (
     PRIMARY KEY(item_name, date)
 );
 
--- NEW TABLE
 CREATE TABLE IF NOT EXISTS Feedback (
     feedback_id int AUTO_INCREMENT PRIMARY KEY,
     student_id varchar(30) NOT NULL,
@@ -62,140 +61,140 @@ CREATE TABLE IF NOT EXISTS Feedback (
     `date` date DEFAULT (curdate())
 );
 
-INSERT INTO
-    stu_info (
-        student_id,
-        student_name,
-        `password`,
-        date_of_birth,
-        email_id,
-        room_no
-    )
-VALUES
-    (
-        '170001013',
-        'ATCHE SRAVYA',
-        '1234',
-        '2000-03-03',
-        'atche@gmail.com',
-        '606'
-    ),
-    (
-        '170001014',
-        'RUSHYA',
-        '123',
-        '2000-06-10',
-        'rushya@gmail.com',
-        '604'
-    ),
-    (
-        '170002013',
-        'SHIRIDI',
-        '234',
-        '1999-07-17',
-        'shirdi@gmail.com',
-        '302'
-    ),
-    (
-        '170001015',
-        'SAMHIT',
-        '657',
-        '1999-11-12',
-        'samhit@gmail.com',
-        '235'
-    ),
-    (
-        '170001017',
-        'DINESH',
-        '286',
-        '2000-04-03',
-        'dinesh@gmail.com',
-        '245'
-    );
+-- INSERT INTO
+--     stu_info (
+--         student_id,
+--         student_name,
+--         `password`,
+--         date_of_birth,
+--         email_id,
+--         room_no
+--     )
+-- VALUES
+--     (
+--         '170001013',
+--         'ATCHE SRAVYA',
+--         '1234',
+--         '2000-03-03',
+--         'atche@gmail.com',
+--         '606'
+--     ),
+--     (
+--         '170001014',
+--         'RUSHYA',
+--         '123',
+--         '2000-06-10',
+--         'rushya@gmail.com',
+--         '604'
+--     ),
+--     (
+--         '170002013',
+--         'SHIRIDI',
+--         '234',
+--         '1999-07-17',
+--         'shirdi@gmail.com',
+--         '302'
+--     ),
+--     (
+--         '170001015',
+--         'SAMHIT',
+--         '657',
+--         '1999-11-12',
+--         'samhit@gmail.com',
+--         '235'
+--     ),
+--     (
+--         '170001017',
+--         'DINESH',
+--         '286',
+--         '2000-04-03',
+--         'dinesh@gmail.com',
+--         '245'
+--     );
 
-INSERT INTO
-    mess_member (
-        member_id,
-        member_name,
-        date_of_birth,
-        `password`,
-        email_id,
-        phone_no
-    )
-VALUES
-    (
-        '100',
-        'karthik gurram',
-        '2000-03-06',
-        '108',
-        'karthik@gmail.com',
-        2
-    ),
-    (
-        '106',
-        'praveen sbhg',
-        '2000-04-06',
-        '109',
-        'praveen@gmail.com',
-        2
-    );
+-- INSERT INTO
+--     mess_member (
+--         member_id,
+--         member_name,
+--         date_of_birth,
+--         `password`,
+--         email_id,
+--         phone_no
+--     )
+-- VALUES
+--     (
+--         '100',
+--         'karthik gurram',
+--         '2000-03-06',
+--         '108',
+--         'karthik@gmail.com',
+--         2
+--     ),
+--     (
+--         '106',
+--         'praveen sbhg',
+--         '2000-04-06',
+--         '109',
+--         'praveen@gmail.com',
+--         2
+--     );
 
-INSERT INTO
-    used_stock_details
-VALUES
-    ('eggs', 'dozen', 10, 2, '2024-04-21'),
-    ('bananas', 'dozen', 15, 6, '2024-04-21');
+-- INSERT INTO
+--     used_stock_details
+-- VALUES
+--     ('eggs', 'dozen', 10, 2, '2024-04-21'),
+--     ('bananas', 'dozen', 15, 6, '2024-04-21');
 
-INSERT INTO
-    new_stock_details
-VALUES
-    ('eggs', 'dozen', 10, 2, '2024-04-21'),
-    ('bananas', 'dozen', 15, 6, '2024-04-21');
+-- INSERT INTO
+--     new_stock_details
+-- VALUES
+--     ('eggs', 'dozen', 10, 2, '2024-04-21'),
+--     ('bananas', 'dozen', 15, 6, '2024-04-21');
 
-INSERT INTO
-    messmenu
-VALUES
-    (
-        'breakfast',
-        40,
-        'poha,milk,bread,jalebi',
-        'vada,sambar,milk,bread',
-        'utappam,chutney,milk,bread',
-        'idli,sambar,milk,bread',
-        'upma,chutney,milk,bread',
-        'dosa,chutney,sambar,milk,bread',
-        'parata,dahi,milk,bread'
-    ),
-    (
-        'lunch',
-        50,
-        'rice,roti,rajma,',
-        'rice,roti,sev tamatar',
-        'rice,roti,paneer masala',
-        'rice,roti,aloo gobhi',
-        'rice,roti,bindi fry',
-        'rice,roti,chilli panner',
-        'rice,roti,dal'
-    ),
-    (
-        'high_tea',
-        30,
-        'samosa,coffee,tea,bread',
-        'maggie,coffee,tea,bread',
-        'pakoda,coffee,tea,bread',
-        'kachori,coffee,tea,bread',
-        'noodles,coffee,tea,bread',
-        'french fries,coffee,tea,bread',
-        'veg fingers,coffee,tea,bread'
-    ),
-    (
-        'dinner',
-        60,
-        'rice,roti,rajma,',
-        'rice,roti,sev tamatar',
-        'rice,roti,paneer masala',
-        'rice,roti,aloo gobhi',
-        'rice,roti,bindi fry',
-        'rice,roti,chilli panner',
-        'rice,roti,dal'
-    );
+-- INSERT INTO
+--     messmenu
+-- VALUES
+--     (
+--         'breakfast',
+--         40,
+--         'poha,milk,bread,jalebi',
+--         'vada,sambar,milk,bread',
+--         'utappam,chutney,milk,bread',
+--         'idli,sambar,milk,bread',
+--         'upma,chutney,milk,bread',
+--         'dosa,chutney,sambar,milk,bread',
+--         'parata,dahi,milk,bread'
+--     ),
+--     (
+--         'lunch',
+--         50,
+--         'rice,roti,rajma,',
+--         'rice,roti,sev tamatar',
+--         'rice,roti,paneer masala',
+--         'rice,roti,aloo gobhi',
+--         'rice,roti,bindi fry',
+--         'rice,roti,chilli panner',
+--         'rice,roti,dal'
+--     ),
+--     (
+--         'high_tea',
+--         30,
+--         'samosa,coffee,tea,bread',
+--         'maggie,coffee,tea,bread',
+--         'pakoda,coffee,tea,bread',
+--         'kachori,coffee,tea,bread',
+--         'noodles,coffee,tea,bread',
+--         'french fries,coffee,tea,bread',
+--         'veg fingers,coffee,tea,bread'
+--     ),
+--     (
+--         'dinner',
+--         60,
+--         'rice,roti,rajma,',
+--         'rice,roti,sev tamatar',
+--         'rice,roti,paneer masala',
+--         'rice,roti,aloo gobhi',
+--         'rice,roti,bindi fry',
+--         'rice,roti,chilli panner',
+--         'rice,roti,dal'
+--     );
