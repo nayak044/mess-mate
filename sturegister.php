@@ -49,7 +49,6 @@
                 Confirm Password: <input type="password" name="cpass"><br />
                 date of birth : <input type="date" name="d_o_b"><br />
                 Room no : <input type="text" name="room_no"><br />
-                Block name : <input type="text" name="block_name"><br />
                 <input type="submit" value="Register" name="submit" />
 
             </fieldset>
@@ -66,7 +65,6 @@
             $stu_name = $_POST['stu_name'];
             $d_o_b = $_POST['d_o_b'];
             $room_no = $_POST['room_no'];
-            $block_name = $_POST['block_name'];
             $con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management') or die(mysql_error());
             // mysql_select_db('mess_management') or die("cannot select DB");  
     
@@ -74,8 +72,8 @@
             $numrows = mysqli_num_rows($query);
             if ($numrows == 0) {
                 //    $sql="INSERT INTO login(username,password) VALUES('$user','$pass')";  
-                $sql1 = "INSERT INTO stu_info(student_id,student_name,date_of_birth,password,room_no,block_name) VALUES
-	         ('$user','$stu_name','$d_o_b','$pass','$room_no','$block_name')";
+                $sql1 = "INSERT INTO stu_info(student_id,student_name,date_of_birth,password,room_no) VALUES
+	         ('$user','$stu_name','$d_o_b','$pass','$room_no')";
 
                 $result = mysqli_query($con, $sql1);
                 if ($result) {
