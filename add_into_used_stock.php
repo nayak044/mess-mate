@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>add into used stock details</title>
+    <style>
+        body {
+            margin-top: 100px;
+            margin-bottom: 100px;
+            margin-right: 150px;
+            margin-left: 80px;
+            background-color: azure;
+            color: palevioletred;
+            font-family: verdana;
+            font-size: 100%
+        }
+
+        h1 {
+            color: indigo;
+            font-family: verdana;
+            font-size: 100%;
+        }
+
+        h2 {
+            color: indigo;
+            font-family: verdana;
+            font-size: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <p align="right"><a href="index.php">log out </a></p>
+
+    <center>
+        <h1>NEW ITEM DETAILS</h1>
+    </center>
+
+    <h2>Enter the details of item:</h2>
+    <form action="" method="POST">
+        <legend>
+            <fieldset>
+
+
+                Item name : <input type="text" name="item_name"><br />
+                Cost per unit : <input type="text" name="cost_per_unit"><br />
+                Unit : <input type="text" name="unit"><br />
+                Quantity bought : <input type="text" name="quantity_bought"><br />
+
+                <input type="submit" value="submit" name="submit" />
+
+            </fieldset>
+        </legend>
+    </form>
+    <?php
+    if (isset($_POST["submit"])) {
+        if (!empty($_POST['item_name']) && !empty($_POST['cost_per_unit']) && !empty($_POST['unit']) && !empty($_POST['quantity_bought'])) {
+            $item_name = $_POST['item_name'];
+            $cost_per_unit = $_POST['cost_per_unit'];
+            $unit = $_POST['unit'];
+            $quantity_bought = $_POST['quantity_bought'];
+
+            $con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management') or die(mysql_error());
+
+            $query = mysqli_query($con, "insert into new_stock_details(item_name,cost_per_unit,unit,quantity_bought,date)
+                         values('" . $item_name . "','" . $cost_per_unit . "','" . $unit . "','" . $quantity_bought . "','0000-0-0')");
+
+
+
+            $query1 = mysqli_query($con, "update new_stock_details set date = curdate() where item_name = '" . $item_name . "' and date = '0000-0-0' ");
+            if ($query1 && $query) {
+                echo "stock details are updated successfully...";
+                echo "<br>";
+            } else {
+                echo ("Error description: " . mysqli_error($con));
+                echo "<br>";
+                echo "failure";
+                echo "<br>";
+            }
+
+        } else {
+            echo "All fields are required!";
+        }
+    }
+    ?>
+
+    <p align="right"><a href="admin.php">click here to visit back </a></p>
+
+</body>
+
+</html>
