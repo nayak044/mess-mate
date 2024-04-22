@@ -49,12 +49,18 @@ CREATE TABLE IF NOT EXISTS used_stock_details (
     unit varchar(30),
     quantity_used int(11),
     quantity_left int (11),
-    date date DEFAULT,
+    `date` date DEFAULT (curdate()),
     PRIMARY KEY(item_name, date)
 );
 
+-- NEW TABLE
+
 CREATE TABLE IF NOT EXISTS Feedback (
-    
+    feedback_id int PRIMARY KEY DEFAULT AUTO_INCREMENT,
+    student_id  varchar(30) NOT NULL,
+    `message` varchar(255) NOT NULL,
+    rating int,
+    `date` date DEFAULT (curdate())
 );
 
 
