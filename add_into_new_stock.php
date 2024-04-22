@@ -59,11 +59,11 @@
             $quantity_left = $_POST['quantity_left'];
 
             $con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management') or die(mysql_error());
-
+            $date = date('Y-m-d H:i:s');
             $query = mysqli_query($con, "insert into used_stock_details(item_name,unit,quantity_used,quantity_left,date)
-                         values('" . $item_name . "','" . $unit . "','" . $quantity_used . "','" . $quantity_left . "','0000-0-0')");
+                         values('" . $item_name . "','" . $unit . "','" . $quantity_used . "','" . $quantity_left . "','" . $date . "')");
 
-            $query1 = mysqli_query($con, "update used_stock_details set date = curdate() where item_name = '" . $item_name . "' and date = '0000-0-0' ");
+            $query1 = mysqli_query($con, "update used_stock_details set date = curdate() where item_name = '" . $item_name . "' and date = '" . "'. $date .'");
             if ($query1 && $query) {
                 echo "stock details are updated successfully...";
                 echo "<br>";

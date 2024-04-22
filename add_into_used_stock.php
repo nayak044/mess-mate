@@ -67,7 +67,7 @@
 
 
 
-            $query1 = mysqli_query($con, "update new_stock_details set date = curdate() where item_name = '" . $item_name . "' and date = '0000-0-0' ");
+            $query1 = mysqli_query($con, "update new_stock_details set date = curdate() where item_name = '" . $item_name . "' and date ='" . "'. $date .'");
             if ($query1 && $query) {
                 echo "stock details are updated successfully...";
                 echo "<br>";

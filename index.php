@@ -121,7 +121,7 @@
 
             $host = "localhost";
             $root = "root";
-            $password = "";
+            $password = "AIDNITRA#P98";
             $db = "mess_management";
             $con = mysqli_connect($host, $root, $password, $db);
             //or die(mysql_error());  
