@@ -6,7 +6,7 @@ OR REPLACE DATABASE mess_management;
 CREATE TABLE IF NOT EXISTS stu_info (
     student_id varchar(30) PRIMARY KEY,
     student_name varchar(30) NOT NULL,
-    `password` varchar(30),
+    PASSWORD varchar(30),
     date_of_birth date,
     room_no varchar(30),
 );
@@ -15,24 +15,11 @@ CREATE TABLE IF NOT EXISTS emp_details (
     emp_id varchar(30) PRIMARY KEY,
     first_name varchar(30),
     last_name varchar(30),
-    designation_id varchar(30),
     date_of_birth date,
     email_id varchar(30),
-    hire_date date,
-    no_of_leaves int(11),
-    house_no varchar(30),
-    street_no varchar(30),
-    street_name varchar(30),
     city varchar(30),
     `state` varchar(30),
     pincode varchar(30),
-    gross_salary int (11),
-);
-
-CREATE TABLE IF NOT EXISTS admin_details (
-    admin_id varchar(30) NOT NULL,
-    admin_password varchar(30) NOT NULL,
-    FOREIGN KEY (admin_id) REFERENCES emp_details (emp_id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS messmenu (
@@ -47,23 +34,6 @@ CREATE TABLE IF NOT EXISTS messmenu (
     sunday varchar(200)
 );
 
-CREATE TABLE IF NOT EXISTS coupons_registered (
-    student_id varchar(30),
-    date date,
-    breakfast bool,
-    used_breakfast bool,
-    b_used_time datetime,
-    lunch bool,
-    used_lunch bool,
-    l_used_time datetime,
-    high_tea bool,
-    used_high_tea bool,
-    h_used_time datetime,
-    dinner bool,
-    used_dinner bool,
-    d_used_time datetime,
-    PRIMARY KEY(student_id, date)
-);
 
 CREATE TABLE IF NOT EXISTS new_stock_details (
     item_name varchar(30),
@@ -79,9 +49,14 @@ CREATE TABLE IF NOT EXISTS used_stock_details (
     unit varchar(30),
     quantity_used int(11),
     quantity_left int (11),
-    date date DEFAULT ,
+    date date DEFAULT,
     PRIMARY KEY(item_name, date)
 );
+
+CREATE TABLE IF NOT EXISTS Feedback (
+    
+);
+
 
 INSERT INTO
     stu_info
@@ -137,14 +112,8 @@ INSERT INTO
         emp_id,
         first_name,
         last_name,
-        designation_id,
         date_of_birth,
         email_id,
-        hire_date,
-        no_of_leaves,
-        house_no,
-        street_no,
-        street_name,
         city,
         state,
         pincode
