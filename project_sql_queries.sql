@@ -10,8 +10,7 @@ student_name varchar(30) not null ,
 PASSWORD varchar(30),
 date_of_birth date,
 room_no varchar(30),
-block_name varchar(30),
-wallet_money int(11) default 0
+
 );
 
 CREATE TABLE  IF NOT EXISTS  designation_details
@@ -31,14 +30,12 @@ designation_id varchar(30),
 date_of_birth date,
 email_id varchar(30),
 hire_date date,
-no_of_leaves int(11),
 house_no varchar(30),
 street_no varchar(30),
 street_name varchar(30),
 city varchar(30),
 state varchar(30),
 pincode varchar(30),
-gross_salary int (11),
 FOREIGN KEY (designation_id)
 REFERENCES designation_details (designation_id)
 ON DELETE CASCADE
@@ -64,26 +61,6 @@ thursday varchar(200),
 friday varchar(200),
 saturday varchar(200),
 sunday varchar(200)
-);
-
-
-CREATE TABLE IF NOT EXISTS coupons_registered 
-(
-student_id  varchar(30),
-date date,
-breakfast bool,
-used_breakfast bool,
-b_used_time datetime,
-lunch bool,
-used_lunch bool,
-l_used_time datetime,
-high_tea bool,
-used_high_tea bool,
-h_used_time datetime,
-dinner bool,
-used_dinner bool,
-d_used_time datetime,
-PRIMARY KEY(student_id,date)
 );
 
 

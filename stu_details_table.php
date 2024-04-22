@@ -81,7 +81,6 @@
 					<td> <?php echo $rows['date_of_birth']; ?></td>
 					<td> <?php echo $rows['room_no']; ?></td>
 					<td> <?php echo $rows['block_name']; ?></td>
-					<td> <?php echo $rows['wallet_money']; ?></td>
 
 				</tr>
 				<?php
