@@ -50,11 +50,9 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
 	if (isset($_POST["confirm"])) {
 
 		if (!empty($_POST['student_id'])) {
-			$host = "localhost";
-			$root = "root";
-			$password = "AIDNITRA#P98";
-			$db = "mess_management";
-			$con = mysqli_connect($host, $root, $password, $db);
+			require_once 'config.php';
+
+            $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
 			$stu = $_POST['student_id'];
 			//	echo $stu;
 			$sql = mysqli_query($con, "select * from stu_info where student_id = '" . $stu . "' ");

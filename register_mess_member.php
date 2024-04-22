@@ -58,14 +58,14 @@
             !empty($_POST['user'])  && !empty($_POST['name']) && !empty($_POST['email_id'])
             && !empty($_POST['d_o_b']) && !empty($_POST['phone_no'])
         ) {
-            //echo "heya";
             $user = $_POST['user'];
             $name = $_POST['name'];
             $d_o_b = $_POST['d_o_b'];
             $email_id = $_POST['email_id'];
             $phone_no = $_POST['phone_no'];
-            $con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management') or die(mysql_error());
-            // mysql_select_db('mess_management') or die("cannot select DB");  
+            require_once 'config.php';
+
+            $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
     
             $query = mysqli_query($con, "SELECT * FROM mess_member WHERE emp_id='" . $user . "'");
             $numrows = mysqli_num_rows($query);

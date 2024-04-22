@@ -122,16 +122,11 @@ session_start();
             $user = $_POST['user'];
             $pass = $_POST['pass'];
 
-            $host = "localhost";
-            $root = "root";
-            $password = "AIDNITRA#P98";
-            $db = "mess_management";
-            $con = mysqli_connect($host, $root, $password, $db);
-            //or die(mysql_error());  
-            //mysql_select_db('mess_management') or die("cannot select DB");  
+            require_once 'config.php';
+
+            $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
             if (mysqli_connect_errno()) {
                 echo "Failed to connect to MySQL: " . mysqli_connect_error();
-                //you need to exit the script, if there is an error
                 exit();
             }
 

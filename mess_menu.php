@@ -53,7 +53,9 @@ session_start();
 
 
 	<?php
-	$conn = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management');
+	require_once 'config.php';
+
+	$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
 	$query = mysqli_query($conn, "select * from messmenu ");
 	?>
 	<table align="center" border="1px" style="width:800px; line-height:60px;">

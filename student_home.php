@@ -58,7 +58,9 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
 	</div>
 
 	<?php
-	$con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management');
+	require_once 'config.php';
+
+	$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
 	$name = mysqli_query($con, "select student_name, room_no from stu_info where student_id = '" . $_SESSION['sess_user'] . "' ");
 	$getname = mysqli_fetch_assoc($name);
 	echo "Hello...<br>";
@@ -72,22 +74,11 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
 		?>
 
 
-	<ceneter>
+	<center>
 		<p><a href="mess_menu.php">View mess menu</a></p>
 		<p><a href="send_feedback.php">Submit Feeback form</a></p>
 		<p><a href="stu_details_table.php">View HostelMates</a></p>
-	</ceneter>
-
-	<?php
-
-	$con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management');
-	$items = [];
-	$_SESSION['breakfast'] = 0;
-	$_SESSION['lunch'] = 0;
-	$_SESSION['high_tea'] = 0;
-	$_SESSION['dinner'] = 0;
-
-	?>
+	</center>
 </body>
 
 </html>

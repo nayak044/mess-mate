@@ -60,7 +60,9 @@
 			$day = $_POST['day'];
 			$food = $_POST['food'];
 
-			$con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management') or die(mysql_error());
+			require_once 'config.php';
+
+            $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
 			// mysql_select_db('mess_management') or die("cannot select DB"); 
 	
 			if ($meal_course == 'breakfast') {

@@ -70,7 +70,9 @@
             $unit = $_POST['unit'];
             $quantity_bought = $_POST['quantity_bought'];
 
-            $con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management') or die(mysql_error());
+            require_once 'config.php';
+
+            $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
 
             $query = mysqli_query($con, "insert into new_stock_details(item_name,cost_per_unit,unit,quantity_bought,date)
                          values('" . $item_name . "','" . $cost_per_unit . "','" . $unit . "','" . $quantity_bought . "','0000-0-0')");

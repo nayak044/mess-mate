@@ -64,9 +64,9 @@
             $stu_name = $_POST['stu_name'];
             $d_o_b = $_POST['d_o_b'];
             $room_no = $_POST['room_no'];
-            $con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management') or die(mysql_error());
-            // mysql_select_db('mess_management') or die("cannot select DB");  
-    
+            require_once 'config.php';
+
+            $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
             $query = mysqli_query($con, "SELECT * FROM stu_info WHERE student_id='" . $user . "'");
             $numrows = mysqli_num_rows($query);
             if ($numrows == 0) {

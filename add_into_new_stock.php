@@ -68,7 +68,9 @@
             $unit = $_POST['unit'];
             $quantity_left = $_POST['quantity_left'];
 
-            $con = mysqli_connect('localhost', 'root', 'AIDNITRA#P98', 'mess_management') or die(mysql_error());
+            require_once 'config.php';
+
+            $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
             $date = date('Y-m-d H:i:s');
             $query = mysqli_query($con, "insert into used_stock_details(item_name,unit,quantity_used,quantity_left,date)
                          values('" . $item_name . "','" . $unit . "','" . $quantity_used . "','" . $quantity_left . "','" . $date . "')");
