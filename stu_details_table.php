@@ -56,7 +56,7 @@ session_start();
 	<?php
 	require_once 'config.php';
 
-	$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
 	$query = mysqli_query($conn, "select * from stu_info ");
 	?>
 	<table align="center">

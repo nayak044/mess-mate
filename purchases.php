@@ -1,8 +1,16 @@
+<?php
+session_start();
+if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['role'] != "mess_member") {
+    header("location:index.php");
+}
+?>
+
+
 <!doctype html>
 <html>
 
 <head>
-	<title>available stock details</title>
+	<title>Purchase details</title>
 	<style>
 		body {
 
@@ -46,18 +54,16 @@
 	<?php
 	require_once 'config.php';
 
-	$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
 	$query = mysqli_query($conn, "select * from new_stock_details ");
 	?>
 	<table align="center" border="1px" style="width:800px; line-height:60px;">
 		<tr>
 			<th colspan="7">
-				<h2>AVAILABLE STOCK DETAILS</h2>
+				<h2>PURCHASE DETAILS</h2>
 			</th>
 		</tr>
 		<tr>
-
-
 			<th> Item name </th>
 			<th> Cost per unit </th>
 			<th> Units </th>

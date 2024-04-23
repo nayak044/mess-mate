@@ -37,31 +37,21 @@
 	<?php
 	require_once 'config.php';
 
-	$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
-	$query = mysqli_query($conn, "select * from mess_member ");
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die(mysql_error());
+	$query = mysqli_query($conn, "select member_id, member_name, date_of_birth, email_id, phone_no from mess_member ");
 	?>
-	<table align="center" border="1px" style="width:2500px; line-height:60px;">
+	<table align="center" border="1px" style="width: 1000px; line-height:60px;">
 		<tr>
-			<th colspan="15">
+			<th colspan="5">
 				<h2>EMPLOYEE DETAILS</h2>
 			</th>
 		</tr>
 		<tr>
-			<th> Employee id </th>
-			<th> First name </th>
-			<th> Last name </th>
-			<th> Designation id</th>
+			<th> Member id </th>
+			<th> Name </th>
 			<th> Date of birth </th>
 			<th> Email id</th>
-			<th> Hire date</th>
-			<th> No. of leaves</th>
-			<th> Gross salary </th>
-			<th> House no </th>
-			<th> Street no </th>
-			<th> Street name </th>
-			<th> City </th>
-			<th> State </th>
-			<th> Pincode </th>
+			<th> Phone number </th>
 		</tr>
 
 		<?php
@@ -70,22 +60,11 @@
 				?>
 
 				<tr>
-					<td> <?php echo $rows['emp_id']; ?></td>
-					<td> <?php echo $rows['first_name']; ?></td>
-					<td> <?php echo $rows['last_name']; ?></td>
-					<td> <?php echo $rows['designation_id']; ?></td>
+					<td> <?php echo $rows['member_id']; ?></td>
+					<td> <?php echo $rows['member_name']; ?></td>
 					<td> <?php echo $rows['date_of_birth']; ?></td>
 					<td> <?php echo $rows['email_id']; ?></td>
-					<td> <?php echo $rows['hire_date']; ?></td>
-					<td> <?php echo $rows['no_of_leaves']; ?></td>
-					<td> <?php echo $rows['gross_salary']; ?></td>
-					<td> <?php echo $rows['house_no']; ?></td>
-					<td> <?php echo $rows['street_no']; ?></td>
-					<td> <?php echo $rows['street_name']; ?></td>
-					<td> <?php echo $rows['city']; ?></td>
-					<td> <?php echo $rows['state']; ?></td>
-					<td> <?php echo $rows['pincode']; ?></td>
-
+					<td> <?php echo $rows['phone_no']; ?></td>
 				</tr>
 				<?php
 			}

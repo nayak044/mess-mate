@@ -43,17 +43,20 @@
     </div>
 
     <center>
-        <h1>USED ITEM DETAILS</h1>
+        <h1>NEW ITEM DETAILS</h1>
     </center>
 
     <h2>Enter the details of item:</h2>
     <form action="" method="POST">
         <legend>
             <fieldset>
+
+
                 Item name : <input type="text" name="item_name"><br />
+                Cost per unit : <input type="text" name="cost_per_unit"><br />
                 Unit : <input type="text" name="unit"><br />
-                Quantity used : <input type="text" name="quantity_used"><br />
-                Quantity left : <input type="text" name="quantity_left"><br />
+                Quantity bought : <input type="text" name="quantity_bought"><br />
+                Date of purchase : <input type="date" name="date"><br />
 
                 <input type="submit" value="submit" name="submit" />
 
@@ -62,27 +65,29 @@
     </form>
     <?php
     if (isset($_POST["submit"])) {
-        if (!empty($_POST['item_name']) && !empty($_POST['quantity_used']) && !empty($_POST['unit']) && !empty($_POST['quantity_left'])) {
+        if (!empty($_POST['item_name']) && !empty($_POST['cost_per_unit']) && !empty($_POST['unit']) && !empty($_POST['quantity_bought'])) {
             $item_name = $_POST['item_name'];
-            $quantity_used = $_POST['quantity_used'];
+            $cost_per_unit = $_POST['cost_per_unit'];
             $unit = $_POST['unit'];
-            $quantity_left = $_POST['quantity_left'];
+            $quantity_bought = $_POST['quantity_bought'];
+            $date = $_POST['date'];
 
             require_once 'config.php';
 
             $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
-            $date = date('Y-m-d H:i:s');
-            $query = mysqli_query($con, "insert into used_stock_details(item_name,unit,quantity_used,quantity_left,date)
-                         values('" . $item_name . "','" . $unit . "','" . $quantity_used . "','" . $quantity_left . "','" . $date . "')");
 
-            $query1 = mysqli_query($con, "update used_stock_details set date = curdate() where item_name = '" . $item_name . "' and date = '" . "'. $date .'");
+            $query = mysqli_query($con, "insert into new_stock_details(item_name,cost_per_unit,unit,quantity_bought,date)
+                         values('" . $item_name . "','" . $cost_per_unit . "','" . $unit . "','" . $quantity_bought . "','" . $date . "')");
+
+
+
+            $query1 = mysqli_query($con, "update new_stock_details set date = curdate() where item_name = '" . $item_name . "'");
             if ($query1 && $query) {
                 echo "stock details are updated successfully...";
                 echo "<br>";
             } else {
-                echo "entry for the item ";
-                echo $item_name;
-                echo " is already done for today...";
+                echo ("Error description: " . mysqli_error($con));
+                echo "<br>";
                 echo "failure";
                 echo "<br>";
             }

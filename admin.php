@@ -9,7 +9,7 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
 <html>
 
 <head>
-    <title>admin page</title>
+    <title>Admin page</title>
     <style>
         body {
 
@@ -68,11 +68,11 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
     <a href="remove_emp.php">Click here to remove an employee</a><br>
     <a href="emp_details_table.php">Click here to view employee details</a><br>
     <h3>MESS MENU:</h3>
-    <a href="messmenu.php">Click here to view mess menu</a></br>
+    <a href="mess_menu.php">Click here to view mess menu</a></br>
     <a href="change_menu.php">Click here to change mess menu</a><br><br><br>
     <h3>STOCK DETAILS :</h3>
-    <a href="available_stock_table.php">Click here to view available stock details</a><br>
-    <a href="used_stock_table.php">Click here to view used stock details</a><br>
+    <a href="purchases.php">Click here to view purchase details</a><br>
+    <a href="available_stock_details.php">Click here to view used stock details</a><br>
     <a href="add_into_new_stock.php">Click here to update new stock details</a><br>
     <a href="add_into_used_stock.php">Click here to update used stock details</a><br><br><br>
 

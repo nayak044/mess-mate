@@ -55,7 +55,11 @@ session_start();
 	<?php
 	require_once 'config.php';
 
-	$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
+	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
+	if (mysqli_connect_errno()) {
+		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+		exit();
+	}
 	$query = mysqli_query($conn, "select * from messmenu ");
 	?>
 	<table align="center" border="1px" style="width:800px; line-height:60px;">
