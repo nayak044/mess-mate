@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>add into used stock details</title>
+    <title>add into new stock details</title>
     <style>
         body {
             margin-top: 100px;
