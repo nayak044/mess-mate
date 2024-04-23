@@ -63,16 +63,28 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
     </div>
 
     <?php
-    require_once 'config.php';
+require_once 'config.php';
 
+<<<<<<< Updated upstream
     $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
     $query = mysqli_query($conn, "SELECT * FROM Feedback");
+=======
+$con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME) or die(mysql_error());
+$query = mysqli_query($con, "SELECT s.student_id, s.student_name, s.date_of_birth, s.email_id, s.room_no, 
+                                    f.feedback_id, f.message, f.rating, f.date
+                             FROM stu_info s
+                             LEFT JOIN Feedback f ON s.student_id = f.student_id");
+>>>>>>> Stashed changes
 
     if (mysqli_num_rows($query) > 0) {
         echo '<table align="center" border="1px" style="width:800px; line-height:60px;">
                 <tr>
-                    <th style="background-color:#D7DBDD">Feedback ID</th>
                     <th style="background-color:#D7DBDD">Student ID</th>
+                    <th style="background-color:#D7DBDD">Student Name</th>
+                    <th style="background-color:#D7DBDD">Date of Birth</th>
+                    <th style="background-color:#D7DBDD">Email ID</th>
+                    <th style="background-color:#D7DBDD">Room No</th>
+                    <th style="background-color:#D7DBDD">Feedback ID</th>
                     <th style="background-color:#D7DBDD">Message</th>
                     <th style="background-color:#D7DBDD">Rating</th>
                     <th style="background-color:#D7DBDD">Date</th>
@@ -80,8 +92,12 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
 
         while ($row = mysqli_fetch_assoc($query)) {
             echo "<tr>
-                    <td>{$row['feedback_id']}</td>
                     <td>{$row['student_id']}</td>
+                    <td>{$row['student_name']}</td>
+                    <td>{$row['date_of_birth']}</td>
+                    <td>{$row['email_id']}</td>
+                    <td>{$row['room_no']}</td>
+                    <td>{$row['feedback_id']}</td>
                     <td>{$row['message']}</td>
                     <td>{$row['rating']}</td>
                     <td>{$row['date']}</td>
@@ -89,11 +105,12 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
         }
         echo '</table>';
     } else {
-        echo "No feedback forms available.";
+        echo "No student details available.";
     }
 
-    mysqli_close($conn);
+    mysqli_close($con);
     ?>
+
     <p align='right' ><a href="admin.php">Back to Admin Page</a></p>
 </body>
 
