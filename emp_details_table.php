@@ -1,3 +1,11 @@
+<?php
+session_start();
+if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['role'] != "mess_member") {
+    header("location:index.php");
+}
+?>
+
+
 <!doctype html>
 <html>
 
