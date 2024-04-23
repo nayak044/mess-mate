@@ -63,7 +63,9 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
     ?>
     <h3>STUDENT :</h3>
     <a href="remove_stu.php">Click here to remove a student</a><br>
-    <a href="stu_details_table.php">Click here to view student details</a><br><br><br>
+    <a href="stu_details_table.php">Click here to view student details</a><br>
+    <a href="view_feedback.php">Click here to view Feedback</a><br>
+    <br><br><br>
     <h3>EMPLOYEE :</h3>
     <a href="remove_emp.php">Click here to remove an employee</a><br>
     <a href="emp_details_table.php">Click here to view employee details</a><br>

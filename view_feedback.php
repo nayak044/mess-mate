@@ -65,7 +65,7 @@ if (!isset($_SESSION['sess_user']) || !isset($_SESSION['role']) || $_SESSION['ro
     <?php
     require_once 'config.php';
 
-    $con = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
+    $conn = mysqli_connect(DB_HOST, DB_USER, DB_PASS, DB_NAME)  or die(mysql_error());
     $query = mysqli_query($conn, "SELECT * FROM Feedback");
 
     if (mysqli_num_rows($query) > 0) {
