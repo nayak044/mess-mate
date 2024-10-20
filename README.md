@@ -2,7 +2,7 @@
 
 MessMate is a web application that helps the hostel mess committee to manage the mess efficiently. It provides a platform for the mess committee to get feedback, view & update the mess menu, and manaage inventory of the raw materials used in mess. The application is built using PhP, MySQL, HTML, CSS, and JavaScript.
 
-## 📚 Table of Contents
+## 📚 Table of Contents  
 
 - [Features](#features)
 - [Installation](#installation)
@@ -55,4 +55,4 @@ define('DB_NAME', 'your_database_name');
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the [LICENCE](LICENCE) file for details.
+This project is licensed under the MIT License - see the [LICENCE](LICENCE) file for details.  
